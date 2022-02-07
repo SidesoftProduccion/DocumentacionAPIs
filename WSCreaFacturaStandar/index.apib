@@ -1,0 +1,465 @@
+FORMAT: 1A
+
+# WS InvoiceCreate
+
+API para la creación de facturas de venta, notas de crédito y cobros.
+
+# Group Facturas de Venta
+
+## Endpoint de facturas de venta con cobro [/innovativaerp/ws/ec.com.sidesoft.ws.invoicecreate.setInvoiceWeb?endpoint=1]
+
+### Crear factura de venta con cobro[POST]
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "data":{
+                    "action": "invoice",
+                    "org_ob": "9718A0797BCE4A5184401478F340740E",
+                    "subtotal": "100.00",
+                    "discount": "0.00",
+                    "service": "0.00",
+                    "taxes": "0.00",
+                    "total": "100.00",
+                    "customer_invoice_id": "1757146806001",
+                    "customer_name": "FABIO A PAREDES R",
+                    "customer_address": "COLON|E8-85|YANEZ PINZON|EDIFICIO EL DORADO - ALADO DEL POLLO CAMPERO|FABIO A PAREDES R",
+                    "customer_email": "fparedes@sidesoft.com.ec",
+                    "customer_phone": "0991366977",
+                    "line_items": [
+                        {
+                            "product_id": "3AE48D93EC8143A9A20C8809626DFBB3",
+                            "price": "100.00",
+                            "discount": "0.00",
+                            "quantity": 1,
+                            "tax_id": "41614C71B8664AEC9E9DB7FCACC24772"
+                        }
+                    ],
+                    "payments":[
+                        {
+                            "payment_method": "4864E8E671494093A5D2004FDA749F4B",
+                            "amount": "100.00",
+                            "reference_number": "WS"
+                        }
+                    ]
+                }
+            }
+
+    + Schema
+
+            {
+                "type": "object",
+                "properties": {
+                    "action": {
+                        "type": "string",
+                        "description": "Indica la acción a ejecutar, en este caso [invoice] para crear la factura."
+                    },
+                    "org_ob": {
+                        "type": "string",
+                        "description": "Organización en Openbravo con la que se crearan las transacciones."
+                    },
+                    "subtotal": {
+                        "type": "string",
+                        "description": "Subtotal de la factura."
+                    },
+                    "discount": {
+                        "type": "string",
+                        "description": "Descuento total de la factura."
+                    },
+                    "service": {
+                        "type": "string",
+                        "description": "Impuestos de servicio total de la factura."
+                    },
+                    "taxes": {
+                        "type": "string",
+                        "description": "Impuestos totales de la factura."
+                    },
+                    "customer_invoice_id": {
+                        "type": "string",
+                        "description": "Numero de identificación del cliente."
+                    },
+                    "customer_name": {
+                        "type": "string",
+                        "description": "Nombre del cliente."
+                    },
+                    "customer_address": {
+                        "type": "string",
+                        "description": "Dirección del cliente."
+                    },
+                    "customer_email": {
+                        "type": "string",
+                        "description": "Dirección de correo electrónico del cliente."
+                    },
+                    "customer_phone": {
+                        "type": "string",
+                        "description": "Numero de teléfono del cliente."
+                    },
+                    "line_items": {
+                        "type": "array",
+                        "description": "Lineas de la factura."
+                        "product_id": {
+                            "type": "string",
+                            "description": "ID del producto."
+                        },
+                        "price": {
+                            "type": "string",
+                            "description": "Precio unitario del producto."
+                        },
+                        "discount": {
+                            "type": "string",
+                            "description": "Descuento del producto."
+                        },
+                        "quantity": {
+                            "type": "integer",
+                            "description": "Numero de unidades a facturar del producto."
+                        },
+                        "tax_id": {
+                            "type": "string",
+                            "description": "ID del impuesto aplicable al producto."
+                        }
+                    },
+                    "payments": {
+                        "type": "array",
+                        "description": "Cobros de la factura."
+                        "payment_method": {
+                            "type": "string",
+                            "description": "ID del método de pago."
+                        },
+                        "amount": {
+                            "type": "string",
+                            "description": "Monto del cobro."
+                        },
+                        "reference_number": {
+                            "type": "string",
+                            "description": "Referencia del cobro."
+                        },
+                    }
+                }
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "documentNo": "001-001-0078993",
+                "status": "OK",
+                "message": "La factura de venta fue creada exitosamente"
+            }
+
+## Endpoint de facturas de venta sin cobro [/innovativaerp/ws/ec.com.sidesoft.ws.invoicecreate.setInvoiceWeb?endpoint=2]
+
+### Crear factura de venta sin cobro [POST]
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "data":{
+                    "action": "invoice",
+                    "org_ob": "9718A0797BCE4A5184401478F340740E",
+                    "subtotal": "100.00",
+                    "discount": "0.00",
+                    "service": "0.00",
+                    "taxes": "0.00",
+                    "total": "100.00",
+                    "customer_invoice_id": "1757146806001",
+                    "customer_name": "FABIO A PAREDES R",
+                    "customer_address": "COLON|E8-85|YANEZ PINZON|EDIFICIO EL DORADO - ALADO DEL POLLO CAMPERO|FABIO A PAREDES R",
+                    "customer_email": "fparedes@sidesoft.com.ec",
+                    "customer_phone": "0991366977",
+                    "line_items": [
+                        {
+                            "product_id": "3AE48D93EC8143A9A20C8809626DFBB3",
+                            "price": "100.00",
+                            "discount": "0.00",
+                            "quantity": 1,
+                            "tax_id": "41614C71B8664AEC9E9DB7FCACC24772"
+                        }
+                    ]
+                }
+            }
+
+    + Schema
+
+            {
+                "type": "object",
+                "properties": {
+                    "action": {
+                        "type": "string",
+                        "description": "Indica la acción a ejecutar, en este caso [invoice] para crear la factura."
+                    },
+                    "org_ob": {
+                        "type": "string",
+                        "description": "Organización en Openbravo con la que se crearan las transacciones."
+                    },
+                    "subtotal": {
+                        "type": "string",
+                        "description": "Subtotal de la factura."
+                    },
+                    "discount": {
+                        "type": "string",
+                        "description": "Descuento total de la factura."
+                    },
+                    "service": {
+                        "type": "string",
+                        "description": "Impuestos de servicio total de la factura."
+                    },
+                    "taxes": {
+                        "type": "string",
+                        "description": "Impuestos totales de la factura."
+                    },
+                    "customer_invoice_id": {
+                        "type": "string",
+                        "description": "Numero de identificación del cliente."
+                    },
+                    "customer_name": {
+                        "type": "string",
+                        "description": "Nombre del cliente."
+                    },
+                    "customer_address": {
+                        "type": "string",
+                        "description": "Dirección del cliente."
+                    },
+                    "customer_email": {
+                        "type": "string",
+                        "description": "Dirección de correo electrónico del cliente."
+                    },
+                    "customer_phone": {
+                        "type": "string",
+                        "description": "Numero de teléfono del cliente."
+                    },
+                    "line_items": {
+                        "type": "array",
+                        "description": "Lineas de la factura."
+                        "product_id": {
+                            "type": "string",
+                            "description": "ID del producto."
+                        },
+                        "price": {
+                            "type": "string",
+                            "description": "Precio unitario del producto."
+                        },
+                        "discount": {
+                            "type": "string",
+                            "description": "Descuento del producto."
+                        },
+                        "quantity": {
+                            "type": "integer",
+                            "description": "Numero de unidades a facturar del producto."
+                        },
+                        "tax_id": {
+                            "type": "string",
+                            "description": "ID del impuesto aplicable al producto."
+                        }
+                    }
+                }
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "documentNo": "001-001-0078993",
+                "status": "OK",
+                "message": "La factura de venta fue creada exitosamente"
+            }
+
+# Group Notas de Crédito
+
+## Endpoint de notas de crédito [/innovativaerp/ws/ec.com.sidesoft.ws.invoicecreate.setInvoiceWeb?endpoint=3]
+
+### Crear nota de crédito   [POST]
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "data":{
+                    "action": "credit_note",
+                    "org_ob": "9718A0797BCE4A5184401478F340740E",
+                    "reference_invoice_id": "001-001-0078993",
+                    "subtotal": "100.00",
+                    "discount": "0.00",
+                    "service": "0.00",
+                    "taxes": "0.00",
+                    "total": "100.00",
+                    "customer_invoice_id": "1757146806001",
+                    "customer_name": "FABIO A PAREDES R",
+                    "customer_address": "COLON|E8-85|YANEZ PINZON|EDIFICIO EL DORADO - ALADO DEL POLLO CAMPERO|FABIO A PAREDES R",
+                    "customer_email": "fparedes@sidesoft.com.ec",
+                    "customer_phone": "0991366977",
+                    "line_items": [
+                        {
+                            "product_id": "3AE48D93EC8143A9A20C8809626DFBB3",
+                            "price": "100.00",
+                            "discount": "0.00",
+                            "quantity": 1,
+                            "tax_id": "41614C71B8664AEC9E9DB7FCACC24772"
+                        }
+                    ]
+                }
+            }
+
+    + Schema
+
+            {
+                "type": "object",
+                "properties": {
+                    "action": {
+                        "type": "string",
+                        "description": "Indica la acción a ejecutar, en este caso [credit_note] para crear la nota de crédito."
+                    },
+                    "org_ob": {
+                        "type": "string",
+                        "description": "Organización en Openbravo con la que se crearan las transacciones."
+                    },
+                    "reference_invoice_id": {
+                        "type": "string",
+                        "description": "Referencia a la factura que se le aplicara la nota de crédito."
+                    },
+                    "subtotal": {
+                        "type": "string",
+                        "description": "Subtotal de la factura."
+                    },
+                    "discount": {
+                        "type": "string",
+                        "description": "Descuento total de la factura."
+                    },
+                    "service": {
+                        "type": "string",
+                        "description": "Impuestos de servicio total de la factura."
+                    },
+                    "taxes": {
+                        "type": "string",
+                        "description": "Impuestos totales de la factura."
+                    },
+                    "customer_invoice_id": {
+                        "type": "string",
+                        "description": "Numero de identificación del cliente."
+                    },
+                    "customer_name": {
+                        "type": "string",
+                        "description": "Nombre del cliente."
+                    },
+                    "customer_address": {
+                        "type": "string",
+                        "description": "Dirección del cliente."
+                    },
+                    "customer_email": {
+                        "type": "string",
+                        "description": "Dirección de correo electrónico del cliente."
+                    },
+                    "customer_phone": {
+                        "type": "string",
+                        "description": "Numero de teléfono del cliente."
+                    },
+                    "line_items": {
+                        "type": "array",
+                        "description": "Lineas de la factura."
+                        "product_id": {
+                            "type": "string",
+                            "description": "ID del producto."
+                        },
+                        "price": {
+                            "type": "string",
+                            "description": "Precio unitario del producto."
+                        },
+                        "discount": {
+                            "type": "string",
+                            "description": "Descuento del producto."
+                        },
+                        "quantity": {
+                            "type": "integer",
+                            "description": "Numero de unidades a facturar del producto."
+                        },
+                        "tax_id": {
+                            "type": "string",
+                            "description": "ID del impuesto aplicable al producto."
+                        }
+                    }
+                }
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "documentNo": "001-001-0078993",
+                "status": "OK",
+                "message": "La nota de crédito fue creada exitosamente"
+            }
+
+# Group Cobros
+
+## Endpoint de cobros [/innovativaerp/ws/ec.com.sidesoft.ws.invoicecreate.setInvoiceWeb?endpoint=4]
+
+### Crear cobro   [POST]
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "data":{
+                    "action": "payment",
+                    "invoice_number": "001-001-0078993",
+                    "payments":[
+                        {
+                            "payment_method": "4864E8E671494093A5D2004FDA749F4B",
+                            "amount": "100.00",
+                            "reference_number": "WS"
+                        }
+                    ]
+                }
+            }
+
+    + Schema
+
+            {
+                "type": "object",
+                "properties": {
+                    "action": {
+                        "type": "string",
+                        "description": "Indica la acción a ejecutar, en este caso [payment] para crear el cobro."
+                    },
+                    "invoice_number": {
+                        "type": "string",
+                        "description": "Numero de facturas a la que se le aplicara el cobro."
+                    },
+                    "payments": {
+                        "type": "array",
+                        "description": "Cobros de la factura."
+                        "payment_method": {
+                            "type": "string",
+                            "description": "ID del método de pago."
+                        },
+                        "amount": {
+                            "type": "string",
+                            "description": "Monto del cobro."
+                        },
+                        "reference_number": {
+                            "type": "string",
+                            "description": "Referencia del cobro."
+                        },
+                    }
+                    
+                }
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "documentNo": "",
+                "status": "OK",
+                "message": "El cobro fue creado exitosamente"
+            }
+
