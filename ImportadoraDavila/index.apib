@@ -1,0 +1,134 @@
+FORMAT: 1A
+
+# WS Crear Cobros
+
+API para la creación de cobros parciales o completos y consulta de cartera.
+
+# Group Cartera de Clientes
+
+## Cartera [/ws/ec.com.sidesoft.ws.paymentscreate.portfolio]
+
+### Consultar [GET]
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "status": "OK",
+                 "data": [
+                    {
+                        "c_invoice_id": "689CC3DB6DBF49BF9D5F244255D452E0",
+                        "documentno": "003-002-00143221",
+                        "dateinvoiced": "2021-10-13",
+                        "grandtotal": 388.17,
+                        "outstandingamt": 0.00,
+                        "url_xml": "http://190.11.254.74:8080/ss_facturacion_electronica_1//FeDocs/XML/impdavila_fac_003-002-000143221_firmado.xml",
+                        "url_ride": "http://190.11.254.74:8080/ss_facturacion_electronica_1//FeDocs/RIDE/impdavila_fac_003-002-000143221.pdf",
+                        "c_bpartner_id": "FD435B07BDE04AFA978EA50ED4C6D2FF",
+                        "taxid": "1718761248001",
+                        "bp_name": "GOMEZ VALENCIA FELIX MOICES",
+                        "c_paymentterm_id": "4412BBC043DC497CB4CF44750F096FEB",
+                        "pt_name": "Pago a 30 Días",
+                        "payment_schedules": [
+                            {
+                                "fin_payment_schedule_id": "0054C0AF48AA404D96CC2E172257F797",
+                                "cutoff_date": "2021-11-12",
+                                "amount": 388.17,
+                                "paidamt": 388.17,
+                                "outstandingamt": 0.00,
+                                "daysoverdue": 87
+                            }
+                        ]
+                    }
+                ],
+                "message": ""
+            }
+
+## Cartera por número de documento [/ws/ec.com.sidesoft.ws.paymentscreate.portfolio{?documentno}]
+
+### Consultar [GET]
+
++ Parameters
+
+    + documentno (string, optional)
+        Número de documento de la factura.
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "status": "OK",
+                 "data": [
+                    {
+                        "c_invoice_id": "689CC3DB6DBF49BF9D5F244255D452E0",
+                        "documentno": "003-002-00143221",
+                        "dateinvoiced": "2021-10-13",
+                        "grandtotal": 388.17,
+                        "outstandingamt": 0.00,
+                        "url_xml": "http://190.11.254.74:8080/ss_facturacion_electronica_1//FeDocs/XML/impdavila_fac_003-002-000143221_firmado.xml",
+                        "url_ride": "http://190.11.254.74:8080/ss_facturacion_electronica_1//FeDocs/RIDE/impdavila_fac_003-002-000143221.pdf",
+                        "c_bpartner_id": "FD435B07BDE04AFA978EA50ED4C6D2FF",
+                        "taxid": "1718761248001",
+                        "bp_name": "GOMEZ VALENCIA FELIX MOICES",
+                        "c_paymentterm_id": "4412BBC043DC497CB4CF44750F096FEB",
+                        "pt_name": "Pago a 30 Días",
+                        "payment_schedules": [
+                            {
+                                "fin_payment_schedule_id": "0054C0AF48AA404D96CC2E172257F797",
+                                "cutoff_date": "2021-11-12",
+                                "amount": 388.17,
+                                "paidamt": 388.17,
+                                "outstandingamt": 0.00,
+                                "daysoverdue": 87
+                            }
+                        ]
+                    }
+                ],
+                "message": ""
+            }
+
+## Cartera por número de identificación del cliente [/ws/ec.com.sidesoft.ws.paymentscreate.portfolio{?taxid}]
+
+### Consultar [GET]
+
++ Parameters
+
+    + taxid (string, optional)
+        Número de identificación del cliente.
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "status": "OK",
+                 "data": [
+                    {
+                        "c_invoice_id": "689CC3DB6DBF49BF9D5F244255D452E0",
+                        "documentno": "003-002-00143221",
+                        "dateinvoiced": "2021-10-13",
+                        "grandtotal": 388.17,
+                        "outstandingamt": 0.00,
+                        "url_xml": "http://190.11.254.74:8080/ss_facturacion_electronica_1//FeDocs/XML/impdavila_fac_003-002-000143221_firmado.xml",
+                        "url_ride": "http://190.11.254.74:8080/ss_facturacion_electronica_1//FeDocs/RIDE/impdavila_fac_003-002-000143221.pdf",
+                        "c_bpartner_id": "FD435B07BDE04AFA978EA50ED4C6D2FF",
+                        "taxid": "1718761248001",
+                        "bp_name": "GOMEZ VALENCIA FELIX MOICES",
+                        "c_paymentterm_id": "4412BBC043DC497CB4CF44750F096FEB",
+                        "pt_name": "Pago a 30 Días",
+                        "payment_schedules": [
+                            {
+                                "fin_payment_schedule_id": "0054C0AF48AA404D96CC2E172257F797",
+                                "cutoff_date": "2021-11-12",
+                                "amount": 388.17,
+                                "paidamt": 388.17,
+                                "outstandingamt": 0.00,
+                                "daysoverdue": 87
+                            }
+                        ]
+                    }
+                ],
+                "message": ""
+            }
