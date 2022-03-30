@@ -34,7 +34,9 @@ API para la creación de pedidos de venta.
                     ],
                     "notes": "",
                     "ORG_OB": "7FB53481637740A9BDDF6232666F71D6",
-                    "payment_method": "FE6184D817CD448A8707E1C555E02521"
+                    "payment_method": "FE6184D817CD448A8707E1C555E02521",
+                    "sale_channel": "WEB",
+                    "order_external_id": "121212445629"
                 }
             }
     + Schema
@@ -61,6 +63,14 @@ API para la creación de pedidos de venta.
                     "payment_method": {
                         "type": "string",
                         "description": "Indica el identificador del metodo de pago."
+                    },
+                    "sale_channel": {
+                        "type": "string",
+                        "description": "Indica el canal de venta ['WEB','APP'], valor por defecto [APP]."
+                    },
+                    "order_external_id": {
+                        "type": "string",
+                        "description": "Indica el identificador de la orden externa."
                     },
                     "line_items": {
                         "type": "array",
