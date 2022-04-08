@@ -1,0 +1,45 @@
+{
+	"info": {
+		"_postman_id": "2bb1d1a5-7574-4901-a208-cae2fa757471",
+		"name": "Stock Magento",
+		"description": "# API para la actualización del stock de los productos en Magento.\nEl host se encuentra en la ventana de configuracion magento en OpenBravo.\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Stock",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"products\": [\n        {\n            \"sku\": \"inv_3154140279004\",\n            \"quantity\": 30\n        },\n        {\n            \"sku\": \"inv_3154140279004\",\n            \"quantity\": 30\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://186.4.197.235:11103/api/magento/V1/stock",
+					"protocol": "http",
+					"host": [
+						"186",
+						"4",
+						"197",
+						"235"
+					],
+					"port": "11103",
+					"path": [
+						"api",
+						"magento",
+						"V1",
+						"stock"
+					]
+				},
+				"description": "Actualización del stock"
+			},
+			"response": []
+		}
+	]
+}
