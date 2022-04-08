@@ -1,0 +1,59 @@
+FORMAT: 1A
+
+# WS Actualizar Stock Magento
+
+API para la actualización del stock de los productos en Magento.
+
+El host se encuentra en la ventana de configuracion magento en OpenBravo.
+
+# Group Stock productos
+
+## Stock [/stock]
+
+### Consultar [POST]
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "products":[
+                        {
+                            "sku": "inv_3154140279048",
+                            "quantity": 10
+                        },
+                        {
+                            "sku": "inv_3154140279049",
+                            "quantity": 5
+                        }
+                    ]
+                }
+            }
+    + Schema
+
+            {
+                "type": "object",
+                "properties": {
+                    "sku": {
+                        "type": "string",
+                        "description": "sku del producto en magento."
+                    },
+                    "quantity": {
+                        "type": "number",
+                        "description": "Cantidad del stock."
+                    }
+                }
+            }
+
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "errorNumber": 0,
+                "errors": [],
+                "number_errors": 0,
+                "success": true,
+                "message": "Transacción Stock Actualizados"
+            }
