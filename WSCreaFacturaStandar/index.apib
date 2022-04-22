@@ -8,7 +8,7 @@ API para la creación de facturas de venta, notas de crédito y cobros.
 
 ## Factura de venta con cobro [/ws/ec.com.sidesoft.ws.invoicecreate.setInvoiceWeb?endpoint=1]
 
-### Crear [POST]
+### Crear con cobro [POST]
 
 + Request (application/json)
 
@@ -25,19 +25,23 @@ API para la creación de facturas de venta, notas de crédito y cobros.
                     "total": "100.00",
                     "customer_invoice_id": "1757146806001",
                     "customer_name": "FABIO A PAREDES R",
+                    "customer_name": "ROBERTO A RUIZ C",
                     "customer_address": {
-                        "address1": "COLON E8-85 y YANEZ PINZON",
-                        "address2": "EDIFICIO EL DORADO - AL LADO DEL POLLO CAMPERO",
-                        "phone": "0991366977"
+                        "address1": "JULIO TEODORO SALEM N55150 Y N56 NICOLAS URQUIOLA 2",
+                        "address2": "POR LA ESCUELA TECNICA DE AVIACION CIVIL",
+                        "phone": "0983847596"
                     },
-                    "customer_email": "fparedes@sidesoft.com.ec",
+                    "customer_email": "rruiz@sidesoft.com.ec",
                     "line_items": [
                         {
                             "product_id": "3AE48D93EC8143A9A20C8809626DFBB3",
                             "price": "100.00",
                             "discount": "0.00",
                             "quantity": 1,
-                            "tax_id": "41614C71B8664AEC9E9DB7FCACC24772"
+                            "tax_id": "41614C71B8664AEC9E9DB7FCACC24772",
+                            "costcenter_id": "3B19860569AE446FACAEF8E3A34F9127",
+                            "user1_id": "2EF6D8015AE040D19FD6FED344F04B66",
+                            "user2_id": ""
                         }
                     ],
                     "payments":[
@@ -129,6 +133,18 @@ API para la creación de facturas de venta, notas de crédito y cobros.
                         "tax_id": {
                             "type": "string",
                             "description": "ID del impuesto aplicable al producto."
+                        },
+                        "costcenter_id": {
+                            "type": "string",
+                            "description": "ID del proyecto"
+                        },
+                        "user1_id": {
+                            "type": "string",
+                            "description": "ID de la linea de negocio"
+                        },
+                        "user2_id": {
+                            "type": "string",
+                            "description": "ID del centro de costo"
                         }
                     },
                     "payments": {
@@ -155,14 +171,19 @@ API para la creación de facturas de venta, notas de crédito y cobros.
     + Body
 
             {
-                "documentNo": "001-001-0078993",
                 "status": "OK",
-                "message": "La factura de venta fue creada exitosamente"
+                "data": {
+                    "invoice": {
+                        "invoice_id": "CC809FE8B02045F7AAEE5DDBCD976A93",
+                        "invoice_number": "001-001-0079019"
+                    }
+                },
+                "message": ""
             }
 
 ## Factura de venta sin cobro [/ws/ec.com.sidesoft.ws.invoicecreate.setInvoiceWeb?endpoint=2]
 
-### Crear [POST]
+### Crear sin cobro [POST]
 
 + Request (application/json)
 
@@ -191,7 +212,10 @@ API para la creación de facturas de venta, notas de crédito y cobros.
                             "price": "100.00",
                             "discount": "0.00",
                             "quantity": 1,
-                            "tax_id": "41614C71B8664AEC9E9DB7FCACC24772"
+                            "tax_id": "41614C71B8664AEC9E9DB7FCACC24772",
+                            "costcenter_id": "3B19860569AE446FACAEF8E3A34F9127",
+                            "user1_id": "2EF6D8015AE040D19FD6FED344F04B66",
+                            "user2_id": ""
                         }
                     ]
                 }
@@ -214,9 +238,14 @@ API para la creación de facturas de venta, notas de crédito y cobros.
     + Body
 
             {
-                "documentNo": "001-001-0078993",
                 "status": "OK",
-                "message": "La factura de venta fue creada exitosamente"
+                "data": {
+                    "invoice": {
+                        "invoice_id": "CC809FE8B02045F7AAEE5DDBCD976A93",
+                        "invoice_number": "001-001-0079019"
+                    }
+                },
+                "message": ""
             }
 
 # Group Notas de Crédito
@@ -253,7 +282,10 @@ API para la creación de facturas de venta, notas de crédito y cobros.
                             "price": "100.00",
                             "discount": "0.00",
                             "quantity": 1,
-                            "tax_id": "41614C71B8664AEC9E9DB7FCACC24772"
+                            "tax_id": "41614C71B8664AEC9E9DB7FCACC24772",
+                            "costcenter_id": "3B19860569AE446FACAEF8E3A34F9127",
+                            "user1_id": "2EF6D8015AE040D19FD6FED344F04B66",
+                            "user2_id": ""
                         }
                     ]
                 }
@@ -276,9 +308,14 @@ API para la creación de facturas de venta, notas de crédito y cobros.
     + Body
 
             {
-                "documentNo": "001-001-0078993",
                 "status": "OK",
-                "message": "La nota de crédito fue creada exitosamente"
+                "data": {
+                    "invoice": {
+                        "invoice_id": "CC809FE8B02045F7AAEE5DDBCD976A93",
+                        "invoice_number": "001-001-0079019"
+                    }
+                },
+                "message": ""
             }
 
 # Group Cobros
@@ -326,8 +363,8 @@ API para la creación de facturas de venta, notas de crédito y cobros.
     + Body
 
             {
-                "documentNo": "",
                 "status": "OK",
+                "data": [],
                 "message": "El cobro fue creado exitosamente"
             }
 
@@ -366,5 +403,127 @@ API para la creación de facturas de venta, notas de crédito y cobros.
                         }
                     }
                 ],
+                "message": ""
+            }
+
+# Group Dimensiones Lineas de Presupuesto
+
+## Listado de combinaciones de las dimensiones en las lineas del presupuesto [/ws/ec.com.sidesoft.ws.invoicecreate.budgetLineDimension{?budget_type,year,is_dms}]
+
+### Consultar [GET]
+
++ Parameters
+
+    + budget_type (string)
+        [N] Presupuesto de Ingreso, [O] Presupuesto de Egreso
+    + year (string)
+        Año del presupuesto
+    + is_dms (string, optional)
+        [Y] para filtrar los productos con el check de sistema de gestión documental
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "status": "OK",
+                "data": [
+                    {
+                        "budget_area_id": "C754D2DED5574FA8B049617814C756A9",
+                        "budget_area": "01 - GESTION CAPACITACIÓN",
+                        "costcenter_id": "B49C4D802F97471D89C84A204461A0D3",
+                        "costcenter": "1.008-CAPACITACION WAYRA 2021 ",
+                        "user1_id": "2EF6D8015AE040D19FD6FED344F04B66",
+                        "user1": "SA2-CAPACITACIÓN CORPORATIVA",
+                        "budget_item_id": "565356E9ED0D45FBA2FCB33D37B060C4",
+                        "budget_item": "4.1.1.1.01.02-140399A-Tecnología"
+                    }
+                ],
+                "message": ""
+            }
+
+# Group Centro de Costo
+
+## Cobro [/ws/ec.com.sidesoft.ws.invoicecreate.user2]
+
+### Crear [POST]
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "data":{
+                    "org_id": "9718A0797BCE4A5184401478F340740E",
+                    "value": "Prueba Centro de Costo WS",
+                    "name": "Prueba Centro de Costo WS",
+                    "costcenter_id": "BDE50C4B868B4F63BBA4E1E276981A2B",
+                    "user1_id": "3C30BC42E6A24C86901D8FA20F40806D",
+                    "description": "",
+                    "startdate": "2022-01-01",
+                    "enddate": "2022-02-28",
+                    "valuerecap1_id": "F70C5715442645749F87722FA01949E9",
+                    "type_recap": "1"
+                }
+            }
+
+    + Schema
+
+            {
+                "type": "object",
+                "properties": {
+                    "org_id": {
+                        "type": "string",
+                        "description": "ID de la organización"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "Identificador del centro de costo"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Nombre del centro de costo"
+                    },
+                    "costcenter_id": {
+                        "type": "string",
+                        "description": "ID del proyecto"
+                    },
+                    "user1_id": {
+                        "type": "string",
+                        "description": "ID de la linea de negocio"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Descripcion (Opcional)"
+                    },
+                    "startdate": {
+                        "type": "string",
+                        "description": "Fecha de inicio"
+                    },
+                    "enddate": {
+                        "type": "string",
+                        "description": "Fecha final"
+                    },
+                    "valuerecap1_id": {
+                        "type": "string",
+                        "description": "Recap1"
+                    },
+                    "type_recap": {
+                        "type": "string",
+                        "description": "Imprimir tipo de recap"
+                    }
+                }
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "status": "OK",
+                "data": {
+                    "user2_id": "FE41413A9979415EA1B4A675A27B6BFF",
+                    "user1line_id": "1B94F7016C834233A1A6450DA8082D79"
+                },
                 "message": ""
             }
