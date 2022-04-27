@@ -1,0 +1,105 @@
+FORMAT: 1A
+
+# WS Crear Pedidos de Venta
+
+API para la creación de pedidos de venta.
+
+# Group Pedidos de Venta
+
+## Pedido de venta [/ws/ec.com.sidesoft.app.order.SsapporOrder/SalesOrder]
+
+### Crear pedido [POST]
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "data": {
+                    "ID_CLIENTE_FACTURA": "1707042964001",
+                    "created_at": "2022-01-26 05:03:00",
+                    "line_items": [
+                        {
+                            "price": "35.71",
+                            "product_id": "D7F30C8C1E3341249AAD5F25F14F15CB",
+                            "quantity": "1",
+                            "tax_id": "49ACE25D98164D2496062AF72FE972BE"
+                        },
+                        {
+                            "price": "13.41",
+                            "product_id": "D6EFA39999AD41D48702E4A808DB8F6E",
+                            "quantity": "1",
+                            "tax_id": "49ACE25D98164D2496062AF72FE972BE"
+                        }
+                    ],
+                    "notes": "",
+                    "ORG_OB": "7FB53481637740A9BDDF6232666F71D6",
+                    "payment_method": "FE6184D817CD448A8707E1C555E02521",
+                    "sale_channel": "WEB",
+                    "order_external_id": "121212445629"
+                }
+            }
+    + Schema
+
+            {
+                "type": "object",
+                "properties": {
+                    "ID_CLIENTE_FACTURA": {
+                        "type": "string",
+                        "description": "Indica el numero de identificación del cliente."
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "description": "Indica la fecha de creacion del pedido."
+                    },
+                    "ORG_OB": {
+                        "type": "string",
+                        "description": "Organización en Openbravo con la que se crearan las transacciones."
+                    },
+                    "notes": {
+                        "type": "string",
+                        "description": "Observaciones."
+                    },
+                    "payment_method": {
+                        "type": "string",
+                        "description": "Indica el identificador del metodo de pago."
+                    },
+                    "sale_channel": {
+                        "type": "string",
+                        "description": "Indica el canal de venta ['WEB','APP'], valor por defecto [APP]."
+                    },
+                    "order_external_id": {
+                        "type": "string",
+                        "description": "Indica el identificador de la orden externa."
+                    },
+                    "line_items": {
+                        "type": "array",
+                        "description": "Lineas del pedido."
+                        "product_id": {
+                            "type": "string",
+                            "description": "ID del producto."
+                        },
+                        "price": {
+                            "type": "string",
+                            "description": "Precio unitario del producto."
+                        },
+                        "quantity": {
+                            "type": "integer",
+                            "description": "Numero de unidades a facturar del producto."
+                        },
+                        "tax_id": {
+                            "type": "string",
+                            "description": "ID del impuesto aplicable al producto."
+                        }
+                    }
+                }
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "status": "Correct",
+                "message": "943526C98ED94381A8F7569E09C37037"
+            }
